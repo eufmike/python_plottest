@@ -1,6 +1,7 @@
 #%%
 import numpy as np
 import pandas as pd
+from my_package import data_processing
 
 # load data by pandas
 path = '0926WT_analysis.xlsx'
@@ -32,37 +33,24 @@ for i in range(data_seg.shape[0]):
 print(data_seg.shape[0])
 
 # combine segment data and steps
+combined_data = data_processing.combine_seg_step(data_seg, data_steps)
+print(combined_data)
+print(combined_data.shape)
 
-print(data_seg['Step IDs'][0])
-data_seg_1 = data_seg['Step IDs'][0]
-data_seg_1 = data_seg_1.split(sep = ',')
-print(len(data_seg_1))
 
-idx = list(range(len(data_seg_1)))
-data_step1 = pd.DataFrame(data_seg_1,index = idx, columns= ['Step ID'])
-data_step1.dtypes
 
-data_step1['Step ID'] = pd.to_numeric(data_step1['Step ID']) ## change type!!!!!
-##data_step1.dtypes
-##data_steps.dtypes
-
-data_merge = pd.merge(data_step1, data_steps, on='Step ID')
-data_merge
-data_merge.dtypes
-
+# plot 2D graph
 """
 import matplotlib.pyplot as plt
 fig 
 plt_1 = plt.subplot(1,1,figsize(5,5))
 plt_1.plot(data_merge['X Coord'], data_merge['Y Coord'])
 fig
-"""
-
 from ggplot import *
 P1 = ggplot(aes(x= 'X Coord', y = 'Y Coord'), data=data_merge) + \
     geom_path()
 P1.show()
-
+"""
 
 #%%
 # Plotly
