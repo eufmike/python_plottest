@@ -12,17 +12,14 @@ def combine_seg_step(data_seg, data_steps):
         data_steps_df['Step ID'] = pd.to_numeric(data_steps_df['Step ID'])
         # merge with data_steps
         data_merge = pd.merge(data_steps_df, data_steps, on='Step ID')
-        # add object ID
-        object_ID = m + 1
-        object_ID = [object_ID] * len(data_steps_series)
-        object_ID_dict = {
-            'object ID':object_ID
-        }
-        # data_merge = data_merge.assign('object ID'= object_ID.values)
         
-        #####!!!!!!
-        data_merge.loc[:] = pd.Series([data_merge, object_ID_dict], axis = 1)
-
+        # add object ID
+        object_ID = [m+1] * len(data_steps_series)
+        object_ID_dict = {'object ID':object_ID}
+        object_ID_df = pd.DataFrame(object_ID_dict, dtype='category') 
+        # data_merge = data_merge.assign('object ID'= object_ID.values)
+        data_merge = pd.concat([data_merge, object_ID_df], axis = 1)
+        
         combined_data = combined_data.append(data_merge, ignore_index = True)
 
     return combined_data

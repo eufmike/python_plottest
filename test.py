@@ -17,7 +17,10 @@ a2 = pd.DataFrame(a2)
 print(a1)
 print(a2)
 
-weight = [205, 130, 28]
-a1.loc[:, 'weight'] = pd.Series(weight, index = a1.index)
 
-print(a1)
+weight = pd.DataFrame(data={'weight': [205, 130, 28]})
+
+#a1['weight'] = pd.Series(weight, index = a1.index)
+a3 = pd.concat([a1, weight], axis = 1)
+
+print(a3)
