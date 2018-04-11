@@ -17,5 +17,7 @@ a2 = pd.DataFrame(a2)
 print(a1)
 print(a2)
 
-c1 = a1.append(a2, ignore_index = True)
-print(c1)
+weight = [205, 130, 28]
+a1.loc[:, 'weight'] = pd.Series(weight, index = a1.index)
+
+print(a1)

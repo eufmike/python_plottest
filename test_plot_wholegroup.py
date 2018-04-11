@@ -34,11 +34,12 @@ print(data_seg.shape[0])
 
 # combine segment data and steps
 combined_data = data_processing.combine_seg_step(data_seg, data_steps)
-print(combined_data)
-print(combined_data.shape)
+# print(combined_data)
+# print(combined_data.shape)
+combined_data.describe()
 
 
-
+#%%
 # plot 2D graph
 """
 import matplotlib.pyplot as plt
