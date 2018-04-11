@@ -46,11 +46,13 @@ fig
 plt_1 = plt.subplot(1,1,figsize(5,5))
 plt_1.plot(data_merge['X Coord'], data_merge['Y Coord'])
 fig
+"""
+
 from ggplot import *
 P1 = ggplot(aes(x= 'X Coord', y = 'Y Coord'), data=data_merge) + \
-    geom_path()
+    geom_path(aes(group = TrackID.y, color = TrackID.y))
 P1.show()
-"""
+
 
 #%%
 # Plotly

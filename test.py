@@ -19,5 +19,3 @@ print(a2)
 
 c1 = a1.append(a2, ignore_index = True)
 print(c1)
-c2 = pd.concat()
-

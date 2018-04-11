@@ -12,6 +12,12 @@ def combine_seg_step(data_seg, data_steps):
         data_steps_df['Step ID'] = pd.to_numeric(data_steps_df['Step ID'])
         # merge with data_steps
         data_merge = pd.merge(data_steps_df, data_steps, on='Step ID')
+        # add object ID
+        object_ID = m + 1
+        
         combined_data = combined_data.append(data_merge, ignore_index = True)
+
+        
+        
 
     return combined_data
