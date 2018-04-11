@@ -148,8 +148,8 @@ for m, color in zip(object_ID, colors):
 print(data)
 
 layout = dict(
-    width=500,
-    height=500,
+    width=2048,
+    height=1024,
     autosize=False,
     title='sample 01',
     scene=dict(
@@ -183,10 +183,15 @@ layout = dict(
                 z=0.7100,
             )
         ),
-        aspectratio = dict( x=1, y=1, z=0.7 ),
+        aspectratio = dict( x=1, y=1.11, z=0.175),
         aspectmode = 'manual'
     ),
 )
 
 fig = go.Figure(data=data, layout=layout)
 py.iplot(fig, filename='sample_01', height = 400, validate = False)
+
+#%%
+import plotly.offline as offline
+offline.init_notebook_mode()
+offline.iplot(fig, filename='sample_01', validate = False)
