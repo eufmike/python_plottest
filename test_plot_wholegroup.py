@@ -148,7 +148,7 @@ for m, color in zip(object_ID, colors):
 print(data)
 
 layout = dict(
-    width=2048,
+    width=1024,
     height=1024,
     autosize=False,
     title='sample 01',
@@ -192,6 +192,7 @@ fig = go.Figure(data=data, layout=layout)
 py.iplot(fig, filename='sample_01', height = 400, validate = False)
 
 #%%
-import plotly.offline as offline
-offline.init_notebook_mode()
-offline.iplot(fig, filename='sample_01', validate = False)
+import plotly.offline as pyoffline
+#py.offline.init_notebook_mode()
+
+pyoffline.plot(fig)
